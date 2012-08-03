@@ -1,0 +1,12 @@
+<?xml version='1.0' standalone='yes'?>
+<page>
+	<header />
+
+	<block width="700">
+		<title>Welcome to hevi!</title>
+		<content>Thanks for trying **hevi**, you're using the **barebones** version that includes only the bare minimum.
+		</content>
+	</block>
+	
+	<footer />
+</page>

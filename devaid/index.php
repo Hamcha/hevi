@@ -1,13 +1,10 @@
 <?php
 
-/* hevi 02		*/
-/*	barebones	*/
-
 require "globals.php";
 
 session_start();
 
-/* HACKS LOADING (WIP) */
+/* HACKS LOADING */
 if (file_exists("hacks/onload.cfg.xml"))
 {
 	$hacks = simplexml_load_file("hacks/onload.cfg.xml");
@@ -30,7 +27,6 @@ array_shift($url_p);
 
 if (USE_SFU) $page_to_load = str_replace("_html", "", join($url_p,"/"));
 else $page_to_load = join($url_p,"/");
-
 // Variables for use in elements
 $globals = simplexml_load_file("globals.cfg.xml");
 $PageName = $page_to_load;
