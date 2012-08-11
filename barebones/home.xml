@@ -1,5 +1,5 @@
 <?xml version='1.0' standalone='yes'?>
-<page>
+<page xmlns:hevi="namespaces/fail.php">
 	<header />
 
 	<block width="700">

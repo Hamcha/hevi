@@ -1,9 +1,9 @@
 <?php
 
-/* hevi 02		*/
+/* hevi 03/1	*/
 /*	barebones	*/
 
-require "globals.php";
+require "hevi.php";
 
 session_start();
 
@@ -16,6 +16,7 @@ if (file_exists("hacks/onload.cfg.xml"))
 		include $content;
 	}
 }
+
 /* END HACKS */
 
 // Markdown inclusion
@@ -42,9 +43,15 @@ if (!file_exists($page_to_load.".xml"))
 	die("<h1>404 Page not found</h1>");
 }
 
-$xml = simplexml_load_file($page_to_load.".xml");
+$filename = "./".$page_to_load.".xml";
 
-foreach ($xml as $element => $content)
+// Check for cached version (If is enabled)
+if (!USE_CACHE || !file_exists($page_to_load.".xml.cache"))
 {
-	include("theme/".$element.".php");
+	// Cached version doesn't exists / not enabled, load and parse the file
+	$xml = hevi_load($filename);
+	hevi_parse($xml);
+} else {
+	// Cached version exists! Show that one.
+	echo file_get_contents($filename.".cache");
 }
