@@ -23,7 +23,7 @@ function hevi_load($file)
 
 function hevi_cache($file,$data)
 {
-	$handle = file_put_contents("./".$file.".xml.cache",$data);
+	$handle = file_put_contents("./cache/".$file.".xml.cache",$data);
 }
 
 function hevi_parse($node)

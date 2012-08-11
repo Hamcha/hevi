@@ -46,12 +46,12 @@ if (!file_exists($page_to_load.".xml"))
 $filename = "./".$page_to_load.".xml";
 
 // Check for cached version (If is enabled)
-if (!USE_CACHE || !file_exists($page_to_load.".xml.cache"))
+if (!USE_CACHE || !file_exists("cache/".$page_to_load.".xml.cache"))
 {
 	// Cached version doesn't exists / not enabled, load and parse the file
 	$xml = hevi_load($filename);
 	hevi_parse($xml);
 } else {
 	// Cached version exists! Show that one.
-	echo file_get_contents($filename.".cache");
+	echo file_get_contents("cache/".$filename.".cache");
 }
