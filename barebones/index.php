@@ -1,6 +1,6 @@
 <?php
 
-/* hevi 03/1	*/
+/* hevi 03/2	*/
 /*	barebones	*/
 
 require "hevi.php";
@@ -16,7 +16,6 @@ if (file_exists("hacks/onload.cfg.xml"))
 		include $content;
 	}
 }
-
 /* END HACKS */
 
 // Markdown inclusion

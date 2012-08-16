@@ -1,8 +1,5 @@
 <?php 
 
-/* hevi 03/1	*/
-/*	barebones	*/
-
 require "globals.php";
 
 function hevi_load_ns($node)
@@ -18,6 +15,18 @@ function hevi_load_ns($node)
 function hevi_load($file)
 {
 	$xml = simplexml_load_file($file);
+	
+	/* HACKS LOADING (WIP) */
+	if (file_exists("hacks/loaded.cfg.xml"))
+	{
+		$hacks = simplexml_load_file("hacks/loaded.cfg.xml");
+		foreach ($hacks as $element => $content)
+		{
+			include $content;
+		}
+	}
+	/* END HACKS */
+	
 	return $xml;
 }
 
@@ -32,13 +41,6 @@ function hevi_parse($node)
 	if (USE_CACHE) ob_start();
 	foreach ($node as $element => $content)
 	{
-		$namespaces = $content->getNamespaces(true); 
-		foreach($namespaces as $name => $ns) {
-		  foreach ($content->children($ns) as $function => $arg)
-		  {
-		  	call_user_func_array($name."_".$function,array($arg));
-		  }
-		}
 		
 		include("theme/".$element.".php");
 	}
